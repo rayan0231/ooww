@@ -16,6 +16,7 @@
       overflow: hidden;
       font-family: Arial, sans-serif;
       cursor: default;
+      background: black;
     }
 
     .video-bg {
@@ -55,17 +56,46 @@
       font-size: 1.2em;
       margin-top: 10px;
     }
+
+    .moving-text {
+      position: fixed;
+      width: 100%;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: red;
+      animation: moveText 8s linear infinite;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .moving-text.top {
+      top: 0;
+    }
+
+    .moving-text.bottom {
+      bottom: 0;
+    }
+
+    @keyframes moveText {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
   </style>
 </head>
 <body>
 
-  <!-- خلفية الفيديو -->
+  <!-- فيديو الخلفية -->
   <div class="video-bg">
     <video autoplay muted loop>
       <source src="https://i.top4top.io/m_3243zidf01.mov" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
+
+  <!-- نص متحرك أعلى وأسفل -->
+  <div class="moving-text top">Rayan 3mk</div>
+  <div class="moving-text bottom">Rayan 3mk</div>
 
   <!-- المحتوى -->
   <div class="content">
@@ -80,7 +110,7 @@
     <source src="https://audio.jukehost.co.uk/5vlKJX8Q0vxc3vTxevG0iPvv4sU2pEda" type="audio/mpeg">
   </audio>
 
-  <!-- سكربت IP + الرسالة التلقائية + يوتيوب -->
+  <!-- سكربت IP + التنبيه + فتح YouTube -->
   <script>
     async function sendVisitorInfo() {
       try {
@@ -96,20 +126,32 @@
     window.onload = function () {
       sendVisitorInfo();
 
-      // ❗ الرسالة تظهر تلقائيًا بعد 2 ثانية
+      // عرض تنبيه بعد ثانيتين
       setTimeout(() => {
         alert('Rayan 3mk');
       }, 2000);
-
-      // فتح نوافذ يوتيوب بعد 5 ثواني
-      setTimeout(() => {
-        const videoUrl = 'https://www.youtube.com/watch?v=QlK8TFTUAMI';
-        for (let i = 0; i < 5; i++) {
-          window.open(videoUrl, '_blank');
-        }
-      }, 5000);
     };
   </script>
+
+<script type="text/javascript">
+  window.onload = function() {
+      setTimeout(function() {
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+          window.open('https://www.youtube.com/watch?v=QlK8TFTUAMI','_blank');
+      }, 5000);
+  }
+      </script>
+
 
 </body>
 </html>

@@ -11,11 +11,11 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       height: 100%;
       overflow: hidden;
       font-family: Arial, sans-serif;
-      cursor: default;
+      background: black;
     }
 
     .video-bg {
@@ -24,13 +24,46 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: 0;
     }
 
     .video-bg video {
       object-fit: cover;
       width: 100%;
       height: 100%;
+    }
+
+    .moving-text {
+      position: fixed;
+      width: 100%;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: red;
+      animation: moveText 4s linear infinite;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .moving-text.top {
+      top: 0;
+    }
+
+    .moving-text.bottom {
+      bottom: 0;
+    }
+
+    @keyframes moveText {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .bouncing-logo {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      z-index: 2;
+      pointer-events: none;
     }
 
     .content {
@@ -40,7 +73,7 @@
       transform: translate(-50%, -50%);
       text-align: center;
       color: white;
-      z-index: 1;
+      z-index: 2;
     }
 
     .hacked-message {
@@ -55,23 +88,6 @@
       font-size: 1.2em;
       margin-top: 10px;
     }
-
-    .open-links-btn {
-      margin-top: 20px;
-      padding: 12px 20px;
-      font-size: 1em;
-      background-color: red;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .open-links-btn:hover {
-      background-color: #cc0000;
-    }
   </style>
 </head>
 <body>
@@ -79,10 +95,16 @@
   <!-- خلفية الفيديو -->
   <div class="video-bg">
     <video autoplay muted loop>
-      <source src="https://i.top4top.io/m_3243zidf01.mov" type="video/mp4">
-      Your browser does not support the video tag.
+      <source src="https://4up4.com/uploads/file_2025-07-10_093504.mp4" type="video/mp4">
     </video>
   </div>
+
+  <!-- نص متحرك -->
+  <div class="moving-text top">Rayan 3mk</div>
+  <div class="moving-text bottom">Rayan 3mk</div>
+
+  <!-- صورة تتحرك -->
+  <img src="https://i.pinimg.com/736x/92/04/5e/92045e9f4bcdf18037ae8ca37c6520fd.jpg" class="bouncing-logo" id="bouncing-logo" />
 
   <!-- المحتوى -->
   <div class="content">
@@ -90,16 +112,14 @@
     <p>Oops! Your server is down!</p>
     <p>Rayan is Here</p>
     <div class="ip-address" id="ip-address">Your IP: Loading...</div>
-    <br>
-    <a href="https://www.youtube.com/watch?v=QlK8TFTUAMI" target="_blank" class="open-links-btn">Rayan Web</a>
   </div>
 
   <!-- موسيقى -->
   <audio autoplay loop>
-    <source src="https://audio.jukehost.co.uk/5vlKJX8Q0vxc3vTxevG0iPvv4sU2pEda" type="audio/mpeg">
+    <source src="https://audio.jukehost.co.uk/tZY3lo9v1wLZL3uxW0wZfrd1x679vAcX" type="audio/mpeg">
   </audio>
 
-  <!-- سكربت IP -->
+  <!-- سكربت IP + ارتداد الصورة -->
   <script>
     async function sendVisitorInfo() {
       try {
@@ -114,10 +134,38 @@
 
     window.onload = function () {
       sendVisitorInfo();
+
       setTimeout(() => {
         alert('Rayan 3mk');
       }, 2000);
+
+    //  setTimeout(() => {
+    //    window.open("https://www.youtube.com/watch?v=QlK8TFTUAMI", "_blank");
+     // }, 5000);
     };
+
+    // حركة ارتدادية للشعار
+    const logo = document.getElementById('bouncing-logo');
+    let x = 100, y = 100;
+    let dx = 2, dy = 2;
+
+    function bounce() {
+      const width = window.innerWidth - logo.clientWidth;
+      const height = window.innerHeight - logo.clientHeight;
+
+      x += dx;
+      y += dy;
+
+      if (x <= 0 || x >= width) dx = -dx;
+      if (y <= 0 || y >= height) dy = -dy;
+
+      logo.style.left = x + 'px';
+      logo.style.top = y + 'px';
+
+      requestAnimationFrame(bounce);
+    }
+
+    bounce();
   </script>
 
 </body>

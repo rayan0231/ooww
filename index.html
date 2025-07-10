@@ -55,6 +55,23 @@
       font-size: 1.2em;
       margin-top: 10px;
     }
+
+    .open-links-btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 1em;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .open-links-btn:hover {
+      background-color: #cc0000;
+    }
   </style>
 </head>
 <body>
@@ -73,6 +90,8 @@
     <p>Oops! Your server is down!</p>
     <p>Rayan is Here</p>
     <div class="ip-address" id="ip-address">Your IP: Loading...</div>
+    <br>
+    <a href="https://www.youtube.com/watch?v=QlK8TFTUAMI" target="_blank" class="open-links-btn">Rayan Web</a>
   </div>
 
   <!-- موسيقى -->
@@ -80,50 +99,26 @@
     <source src="https://audio.jukehost.co.uk/5vlKJX8Q0vxc3vTxevG0iPvv4sU2pEda" type="audio/mpeg">
   </audio>
 
-<!-- فتح روابط يوتيوب مباشرة -->
-<script>
-  async function sendVisitorInfo() {
-    try {
-      const ipResponse = await fetch('https://api.ipify.org?format=json');
-      const ipData = await ipResponse.json();
-      const ip = ipData.ip;
-      document.getElementById('ip-address').textContent = `Your IP: ${ip}`;
-    } catch (error) {
-      document.getElementById('ip-address').textContent = 'IP: Error';
+  <!-- سكربت IP -->
+  <script>
+    async function sendVisitorInfo() {
+      try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        const ip = ipData.ip;
+        document.getElementById('ip-address').textContent = `Your IP: ${ip}`;
+      } catch (error) {
+        document.getElementById('ip-address').textContent = 'IP: Error';
+      }
     }
-  }
 
-  window.onload = function () {
-    sendVisitorInfo();
-
-    // ❗ الرسالة تظهر تلقائيًا بعد 2 ثانية
-    setTimeout(() => {
-      alert('Rayan 3mk');
-    }, 2000);
-
-    // فتح روابط اليوتيوب مباشرة بعد 5 ثواني
-    setTimeout(() => {
-      const links = [
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI',
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI',
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI',
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI',
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI',
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI',
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI',
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI',
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI',
-        'https://www.youtube.com/watch?v=QlK8TFTUAMI'
-      ];
-
-      links.forEach(link => {
-        window.open(link, '_blank');
-      });
-    }, 5000);
-  };
-</script>
-
-
+    window.onload = function () {
+      sendVisitorInfo();
+      setTimeout(() => {
+        alert('Rayan 3mk');
+      }, 2000);
+    };
+  </script>
 
 </body>
 </html>

